@@ -1,4 +1,5 @@
 var React  = require('react');
+import {Redirect} from 'react-router';
 
 
 class Register extends React.Component {
@@ -7,7 +8,7 @@ class Register extends React.Component {
     super();
     this.handleSubmit  = this.handleSubmit.bind(this);
     this.handleChange  = this.handleChange.bind(this);
-    this.state       = {};
+    this.state       = {redirect: false};
   }
 
   handleChange(event) {
@@ -24,16 +25,15 @@ class Register extends React.Component {
         password: this.state.password
     }
     fetch('/register?data='+JSON.stringify(data))
-      .then(function(resp) {
-        console.log(resp.statusText);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+      .then(() => this.setState({ redirect: true }));
   }
 
 
   render() {
+    if (this.state.redirect == true) {
+      return (<Redirect to="/home"/>);
+    }
+
     return (
       <div>
         <div className="content">
