@@ -1,4 +1,4 @@
-function Coord(state=null, action){
+function Coord(state="", action){
 	if(action.type == "Coord"){
 		return action.coord;
 	} else {

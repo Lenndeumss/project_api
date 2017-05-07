@@ -15,7 +15,7 @@ class RouteApp extends React.Component {
 
   render() {
     return (
-      <div> 
+      <div>
 	        <Route exact path="/" component={Register}/>
           <Route path="/home" component={Home}/>
           <Route path="/addEvent" component={AddEventRedux}/>

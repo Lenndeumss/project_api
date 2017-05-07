@@ -61,6 +61,8 @@ app.get("/register", function(req, res){
 		for (var i = 0; i < data.length; i++) {
 			if (newUser.username == data[i].username && newUser.password == data[i].password) {
 				req.session.isLog = true;
+				req.session.username = data[i].username;
+          		req.session.password = data[i].password;
 			} else {
 				req.session.isLog = false;
 			}
@@ -71,6 +73,28 @@ app.get("/register", function(req, res){
 		} else {
 			res.send('KO');
 		}
+	});
+
+});
+
+app.get("/addEvent", function(req, res){
+	newUser = JSON.parse(req.query.data);
+	UserModel.findOne({ user : req.session.username}, function (err, user) {
+		console.log(user);
+		if(user != null) {
+	        user.events.push({ 
+	            coord : newUser.coord,
+				name  : newUser.name,
+				hour  : newUser.hour,
+				date  : newUser.date,
+				desc  : newUser.desc
+	        });    
+	        user.save(function (error, user) {  
+	          res.send('OK');
+	        });
+	    } else {
+	      	res.send('KO');
+	    }
 	});
 
 });

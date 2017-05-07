@@ -39,7 +39,6 @@ class MapAddEvent extends React.Component {
   handleClick(e){
   	this.setState({latlngMarker: e.latlng})
   	this.props.onHandleClick(this.state.latlngMarker);
-  	console.log('OK');
   }
 
   render() {
