@@ -21,7 +21,7 @@ class Register extends React.Component {
 
     let data = {
         username: this.state.username,
-        email: this.state.email,
+        email   : this.state.email,
         password: this.state.password
     }
     fetch('/register?data='+JSON.stringify(data))
@@ -31,12 +31,13 @@ class Register extends React.Component {
 
   render() {
     if (this.state.redirect == true) {
-      return (<Redirect to="/home"/>);
+      return (<Redirect to="/login"/>);
     }
 
     return (
       <div>
-        <div className="content">
+        <div>
+            <h1 className="titleTop">Register</h1>
             <form onSubmit={this.handleSubmit} className="input-group">
               <input onChange={this.handleChange} type="text" name="username" placeholder="Username"/>
               <input onChange={this.handleChange} type="email" name="email" placeholder="Email"/>

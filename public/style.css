@@ -9,3 +9,11 @@
 .content{
 	margin-bottom: 52px;
 }
+
+.connectResize{
+	height: 250px;
+}
+
+.titleTop{
+	padding-top: 15px;
+}

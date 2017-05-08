@@ -15,24 +15,28 @@ class AddEvent extends React.Component {
 
   handleChange(event) {
     this.setState({ [event.target.name] : event.target.value});
+
   }
 
   handleSubmit(e){
     e.preventDefault()
-    console.log("ok");
-
+    //console.log(this.props.Coord.lat);
     let data = {
-        coord: this.state.coord,
+        lat  : this.props.Coord.lat,
+        lng  : this.props.Coord.lng,
         event: this.state.event,
-        name: this.state.name,
-        hour: this.state.hour,
-        date: this.state.date,
-        desc: this.state.desc
+        name : this.state.name,
+        hour : this.state.hour,
+        date : this.state.date,
+        desc : this.state.desc
     }
 
-
-    fetch('/addEvent?data='+JSON.stringify(data))
+    if(this.state.event != undefined){
+      fetch('/addEvent?data='+JSON.stringify(data))
       .then(() => this.setState({ redirect: true }));
+    } else {
+      alert("Choisir un Type d'événement !");
+    }
   }
 
 
@@ -48,8 +52,9 @@ class AddEvent extends React.Component {
           <h5>Sélectionner l'endroit de l'event :</h5>
           <MapAddEventRedux/>
           <form onSubmit={this.handleSubmit}>
-            <input onChange={this.handleChange} type="text" value={this.props.Coord} placeholder="Coordonnées" name="coord"/>
+            <input type="text" value={this.props.Coord.lat+", "+this.props.Coord.lng} placeholder="Coordonnées" name="coord"/>
             <select onChange={this.handleChange} size="1" name="event">
+              <option>Type de l'Event :</option>
               <option>Teuff</option>
               <option>After</option>
               <option>Before</option>

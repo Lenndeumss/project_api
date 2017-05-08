@@ -12,7 +12,7 @@ class MapAddEvent extends React.Component {
     this.handleLocationFound = this.handleLocationFound.bind(this);
     this.componentDidMount   = this.componentDidMount.bind(this);
     this.handleClick         = this.handleClick.bind(this);
-    this.state = {
+    this.state               = {
       hasLocation: false,
       latlng: {
         lat: 48.85,

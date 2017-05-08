@@ -1,9 +1,9 @@
 var React         = require('react');
 var ReactDOM      = require('react-dom');
 var Route         = require('react-router-dom').Route;
-var Home          = require('./home');
+var HomeRedux     = require('./homeRedux');
 var AddEventRedux = require('./addEventRedux');
-var Register      = require('./register');
+var Connect       = require('./connect');
 
 
 class RouteApp extends React.Component {
@@ -16,8 +16,8 @@ class RouteApp extends React.Component {
   render() {
     return (
       <div>
-	        <Route exact path="/" component={Register}/>
-          <Route path="/home" component={Home}/>
+	        <Route exact path="/"   component={Connect}/>
+          <Route path="/home"     component={HomeRedux}/>
           <Route path="/addEvent" component={AddEventRedux}/>
     	</div> 
     );

@@ -12,6 +12,7 @@ class Home extends React.Component {
 
 
   render() {
+    console.log(this.props.Events);
     return (
       <div>
         <div className="content">

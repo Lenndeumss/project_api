@@ -6,7 +6,7 @@ var MapAddEvent = require('./mapAddEvent');
 function mapDispatchToProps(dispatch){
 	return{
 		onHandleClick: function(latlng) {
-			console.log(latlng);
+			//console.log(latlng);
 			dispatch({type: 'Coord', coord: latlng});
 		}
 	}
