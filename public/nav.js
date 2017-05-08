@@ -11,11 +11,11 @@ class Nav extends React.Component {
   render() {
     return (
       <nav id="nav" className="bar bar-tab">
-        <Link className="tab-item active" data-ignore="push" to="/">
+        <Link className="tab-item active" data-ignore="push" to="/home">
 		    <span className="icon icon-home"></span>
 		    <span className="tab-label">Home</span>
 		</Link>
-        <Link className="tab-item" data-ignore="push" to="/">
+        <Link className="tab-item" data-ignore="push" to="/home">
 		    <span className="icon icon-person"></span>
 		    <span className="tab-label">Profile</span>
 		</Link>
