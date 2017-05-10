@@ -27,16 +27,16 @@ mongoose.connect('mongodb://localhost/lennyApp' , function(err) {
 
 });
 var eventSchema = mongoose.Schema({
-    lat   : String,
-    lng   : String,
-    event : String,
-    name  : String,
-    hour  : String,
-    date  : String,
-    desc  : String,
-    idUser: String
+    lat    : Number,
+    lng    : Number,
+    event  : String,
+    name   : String,
+    hour   : String,
+    date   : String,
+    desc   : String,
+    userId : String
   },
-  { collection: 'eventslist' }
+  { collection: 'eventslist', timestamps: true}
 );
 var userSchema = mongoose.Schema({
     username: String,
@@ -71,16 +71,18 @@ app.get("/login", function(req, res){
 		//console.log(data.length);
 		for (var i = 0; i < data.length; i++) {
 			if (userLog.username == data[i].username && userLog.password == data[i].password) {
-				req.session.isLog = true;
+				req.session.isLog    = true;
 				req.session.username = data[i].username;
-          		req.session.password = data[i].password;
+          		req.session.userId   = data[i].id;
 			} else {
-				req.session.isLog = false;
+				req.session.isLog    = false;
 			}
 		};
 
 		if (req.session.isLog = true) {
-			res.send('logOK');
+			userId = req.session.userId;
+			console.log(userId);
+			res.send(userId);
 		} else {
 			res.send('logKO');
 		}
@@ -90,19 +92,19 @@ app.get("/login", function(req, res){
 
 app.get("/addEvent", function(req, res){
 	newEvent = JSON.parse(req.query.data);
-	console.log(newEvent);
+	//console.log(newEvent);
 	UserModel.findOne({ user : req.session.username}, function (err, user) {
 		//console.log(user.id);
 		if(user != null) {
 	        var event = new EventModel({ 
-	            lat    : newEvent.lat,
-	            lng    : newEvent.lng,
-	            event  : newEvent.event,
-				name   : newEvent.name,
-				hour   : newEvent.hour,
-				date   : newEvent.date,
-				desc   : newEvent.desc,
-				idUser : user.id
+	            lat        : newEvent.lat,
+	            lng        : newEvent.lng,
+	            event      : newEvent.event,
+				name       : newEvent.name,
+				hour       : newEvent.hour,
+				date       : newEvent.date,
+				desc       : newEvent.desc,
+				userId     : newEvent.userId
 	        });    
 	        event.save(function (error, event) {  
 	          res.send('eventOK');
@@ -115,12 +117,29 @@ app.get("/addEvent", function(req, res){
 });
 
 
+app.get('/refresh', function(req, res){
+
+	//console.log(Date(req.query.lastupdate));
+	EventModel.find({"createdAt": {"$gte": req.query.lastupdate}}, function(err, event){
+	var tabEvents = [];
+		//console.log(event);
+		for (var i = 0; i < event.length; i++) {
+			if(req.query.userId != event[i].userId){
+				tabEvents.push(event[i]);
+			}
+		}
+	res.json(tabEvents);
+	});
+	
+});
+
+
 app.get('/', function(req, res) {
     // var AppHtml = ReactDOMServer.renderToString(App({url: '/'}));
     EventModel.find(function(err, events){
     	var eventsList = events;
     	//console.log(eventsList);
-    	res.render("index", {events: eventsList});
+    	res.render("index", {eventsHydrate: eventsList});
     });
 });
 

@@ -23,8 +23,15 @@ class Login extends React.Component {
         username: this.state.username,
         password: this.state.password
     }
+
+    var objLogin = this;
     fetch('/login?data='+JSON.stringify(data))
-      .then(() => this.setState({ redirect: true }));
+      .then(function(data) { return data.text()} )
+      .then(function(userId) { 
+         objLogin.setState({redirect: true, userId: userId});
+         console.log(objLogin.state);
+         objLogin.props.onHandleSubmit(objLogin.state.userId);
+       });
   }
 
 

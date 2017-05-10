@@ -10,14 +10,13 @@ var connect         = require('react-redux').connect;
 var RouteApp 		= require('./route');
 // Reducer
 var combineReducers = require('redux').combineReducers;
-var Coord           = require('./mapAddEventReducer');
+var Coord           = require('./coordReducer');
+var Events          = require('./eventReducer');
+var userId          = require('./userIdReducer');
 
-
-var Events          = events;
-console.log(Events);
-var globalReducers  = combineReducers({Coord, Events});
+var globalReducers  = combineReducers({Coord, Events, userId});
 // Store
-const store         = createStore(globalReducers);
+const store         = createStore(globalReducers, {Events: EventsHydrate});
 
 
 

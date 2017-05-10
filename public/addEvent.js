@@ -22,16 +22,20 @@ class AddEvent extends React.Component {
     e.preventDefault()
     //console.log(this.props.Coord.lat);
     let data = {
-        lat  : this.props.Coord.lat,
-        lng  : this.props.Coord.lng,
-        event: this.state.event,
-        name : this.state.name,
-        hour : this.state.hour,
-        date : this.state.date,
-        desc : this.state.desc
+        lat    : this.props.Coord.lat,
+        lng    : this.props.Coord.lng,
+        event  : this.state.event,
+        name   : this.state.name,
+        hour   : this.state.hour,
+        date   : this.state.date,
+        desc   : this.state.desc,
+        userId : this.props.userId
     }
 
     if(this.state.event != undefined){
+
+      this.props.onHandleClick(data);
+
       fetch('/addEvent?data='+JSON.stringify(data))
       .then(() => this.setState({ redirect: true }));
     } else {

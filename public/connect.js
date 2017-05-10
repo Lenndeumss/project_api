@@ -1,6 +1,6 @@
 var React    = require('react');
 var Register = require('./register');
-var Login    = require('./login');
+var LoginRedux    = require('./loginRedux');
 
 
 class Connect extends React.Component {
@@ -26,7 +26,7 @@ class Connect extends React.Component {
             <Register/>
           </div>
           <div id="item2mobile" className="control-content connectResize active">
-            <Login/>
+            <LoginRedux/>
           </div>
         </div>
       </div>

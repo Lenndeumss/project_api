@@ -1,18 +1,54 @@
 var React  = require('react');
 var Nav    = require('./nav');
-var MapHome = require('./mapHome');
+var MapHomeRedux = require('./mapHomeRedux');
 
 
 class Home extends React.Component {
 
   constructor() {
     super();
+    this.refresh = this.refresh.bind(this);
+    this.state   = {lastupdate: Date.now()};
 
+  }
+
+  refresh() {
+        var objHome = this;
+        fetch('/refresh?userId='+objHome.props.userId+'&lastupdate='+objHome.state.lastupdate)
+        .then(function(data) {return data.json()} )
+        .then(function(tabEvents) {
+            //console.log(tabEvents);
+            objHome.setState({lastupdate:  Date.now()});
+            objHome.props.onHandleRefresh(tabEvents);
+        });
+    }
+
+  componentDidMount(){
+    this.refreshEvent = setInterval(this.refresh, 9000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.refreshEvent);
   }
 
 
   render() {
-    console.log(this.props.Events);
+    //console.log(this.props.Events);
+    var teuff  = [];
+    var after  = [];
+    var before = [];
+    var apero  = [];  
+    for(var i=0; i < this.props.Events.length; i++) {
+        if (this.props.Events[i].event == "Teuff") {
+            teuff.push(this.props.Events[i].name);
+        } else if (this.props.Events[i].event == "After") {
+            after.push(this.props.Events[i].name);
+        } else if (this.props.Events[i].event == "Before") {
+            before.push(this.props.Events[i].name);
+        } else {
+            apero.push(this.props.Events[i].name);
+        }
+    }   
     return (
       <div>
         <div className="content">
@@ -31,12 +67,12 @@ class Home extends React.Component {
             </a>
           </div>
           <div className="card">
-            <span id="item1mobile" className="control-content active">After 1</span>
-            <span id="item2mobile" className="control-content">Before 1<br/>Before2</span>
-            <span id="item3mobile" className="control-content">Teuff 1<br/>Teuff 2<br/>Teuff 3</span>
-            <span id="item4mobile" className="control-content">Apéro 1<br/>Apéro 2<br/>Apéro 3<br/>Apéro 4</span>
+            <span id="item1mobile" className="control-content active">{after}</span>
+            <span id="item2mobile" className="control-content">{before}</span>
+            <span id="item3mobile" className="control-content">{teuff}</span>
+            <span id="item4mobile" className="control-content">{apero}</span>
           </div>
-          <MapHome/>
+          <MapHomeRedux/>
         </div>
         <Nav/>
       </div>

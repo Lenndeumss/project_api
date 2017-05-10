@@ -10,7 +10,6 @@ class MapAddEvent extends React.Component {
   constructor() {
     super();
     this.handleLocationFound = this.handleLocationFound.bind(this);
-    this.componentDidMount   = this.componentDidMount.bind(this);
     this.handleClick         = this.handleClick.bind(this);
     this.state               = {
       hasLocation: false,
@@ -55,9 +54,6 @@ class MapAddEvent extends React.Component {
 	      attribution='Appli Lenny'
 	    />
 	    <Marker position={this.state.latlngMarker}>
-	      <Popup>
-	        <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-	      </Popup>
 	    </Marker>
 	  </Map>
 	)

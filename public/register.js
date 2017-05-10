@@ -31,7 +31,7 @@ class Register extends React.Component {
 
   render() {
     if (this.state.redirect == true) {
-      return (<Redirect to="/login"/>);
+      return (<Redirect to="/home"/>);
     }
 
     return (
