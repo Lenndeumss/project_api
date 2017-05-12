@@ -13,20 +13,22 @@ class Connect extends React.Component {
   render() {
     return (
       <div className="content">
-        <div className="segmented-control">
-          <a className="control-item" href="#item1mobile">
-            Register
-          </a>
-          <a className="control-item active" href="#item2mobile">
-            Login
-          </a>
-        </div>
-        <div className="card">
-          <div id="item1mobile" className="control-content connectResize">
-            <Register/>
+        <div className="content-padded">
+          <div className="segmented-control">
+            <a className="control-item" href="#item1mobile">
+              Register
+            </a>
+            <a className="control-item active" href="#item2mobile">
+              Login
+            </a>
           </div>
-          <div id="item2mobile" className="control-content connectResize active">
-            <LoginRedux/>
+          <div className="card">
+            <div id="item1mobile" className="control-content content-padded connectResize">
+              <Register/>
+            </div>
+            <div id="item2mobile" className="control-content content-padded connectResize active">
+              <LoginRedux/>
+            </div>
           </div>
         </div>
       </div>

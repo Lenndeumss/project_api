@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "lenny.demu"
+    versionCode = "10"
+    version     = "1.0.0" >
+   
+  <plugin name="cordova-plugin-whitelist" source="npm"/>
+	
+<!-- versionCode is optional and Android only -->
+
+  <name>Appli Lenny</name>
+
+  <description>
+   Appli création d'événements festifs
+  </description>
+
+  <author href="https://www.linkedin.com/in/lenny-demu-04a885ab/" email="lennydemu@gmail.com">
+      Lenny Demu
+  </author>
+	
+  <access origin="*"/>
+	
+</widget>

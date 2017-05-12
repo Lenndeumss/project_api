@@ -53,23 +53,25 @@ class AddEvent extends React.Component {
     return (
       <div>
         <div className="content">
-          <h5>Sélectionner l'endroit de l'event :</h5>
-          <MapAddEventRedux/>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.props.Coord.lat+", "+this.props.Coord.lng} placeholder="Coordonnées" name="coord"/>
-            <select onChange={this.handleChange} size="1" name="event">
-              <option>Type de l'Event :</option>
-              <option>Teuff</option>
-              <option>After</option>
-              <option>Before</option>
-              <option>Apéro</option>
-            </select>
-            <input onChange={this.handleChange} type="text" placeholder="Nom de l'Event" name="name"/>
-            <input onChange={this.handleChange} type="date" placeholder="Date" name="date"/>
-            <input onChange={this.handleChange} type="text" placeholder="Heure" name="hour"/>
-            <textarea onChange={this.handleChange} placeholder="Description" rows="4" name="desc"></textarea>
-            <button type="submit" className="btn btn-primary btn-block btn-outlined">Valider</button>
-          </form>
+          <div className="content-padded">
+            <h4>Sélectionner l'endroit de l'event :</h4>
+            <MapAddEventRedux/>
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" value={this.props.Coord.lat+", "+this.props.Coord.lng} placeholder="Coordonnées" name="coord"/>
+              <select onChange={this.handleChange} size="1" name="event">
+                <option>Type de l'Event :</option>
+                <option>Teuff</option>
+                <option>After</option>
+                <option>Before</option>
+                <option>Apéro</option>
+              </select>
+              <input onChange={this.handleChange} type="text" placeholder="Nom de l'Event" name="name"/>
+              <input onChange={this.handleChange} type="date" placeholder="Date" name="date"/>
+              <input onChange={this.handleChange} type="text" placeholder="Heure" name="hour"/>
+              <textarea onChange={this.handleChange} placeholder="Description" rows="4" name="desc"></textarea>
+              <button type="submit" className="btn btn-primary btn-block btn-outlined">Valider</button>
+            </form>
+          </div>
         </div>
         <Nav/>
       </div>

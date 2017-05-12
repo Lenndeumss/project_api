@@ -15,7 +15,7 @@ class Nav extends React.Component {
 		    <span className="icon icon-home"></span>
 		    <span className="tab-label">Home</span>
 		</Link>
-        <Link className="tab-item" data-ignore="push" to="/home">
+        <Link className="tab-item" data-ignore="push" to="/profil">
 		    <span className="icon icon-person"></span>
 		    <span className="tab-label">Profile</span>
 		</Link>

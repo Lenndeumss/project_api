@@ -13,7 +13,7 @@ var mongoose    = require('mongoose');
 var app 		= express();
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static('public', {index: false}));
 app.use(
  session({ 
   secret: 'a4f8071f-c873-4447-8ee2',
@@ -129,6 +129,20 @@ app.get('/refresh', function(req, res){
 			}
 		}
 	res.json(tabEvents);
+	});
+	
+});
+
+app.get('/delete', function(req, res){
+	//Optimisable !
+	var eventDelete = JSON.parse(req.query.data);
+	console.log(eventDelete);
+	EventModel.remove({ name: eventDelete.name, userId: eventDelete.userId}, function(error) {
+		EventModel.find(function(err, events){
+	    	var eventsList = events;
+	    	//console.log(eventsList);
+	    	res.json(eventsList);
+	    });
 	});
 	
 });

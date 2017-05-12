@@ -1,0 +1,19 @@
+#mapHome{ 
+	height: 300px;
+}
+
+#mapAddEvent{ 
+	height: 200px;
+}
+
+.content{
+	margin-bottom: 52px;
+}
+
+.connectResize{
+	height: 250px;
+}
+
+.titleTop{
+	padding-top: 15px;
+}

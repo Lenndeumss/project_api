@@ -39,8 +39,10 @@ class MapHome extends React.Component {
       markers.push(<Marker position={latlngMarker}><Popup><span>{DateHeure}</span></Popup></Marker>);
     }
     //console.log(markers);
-    console.log(this.state.latlng);
+    //console.log(this.state.latlng);
 
+
+    //http://leafletjs.com/examples/custom-icons/leaf-green.png
   	return (
 	  <Map onLocationfound={this.handleLocationFound} ref='map' id="mapHome" center={this.state.latlng} zoom={11}>
 	    <TileLayer
@@ -48,6 +50,13 @@ class MapHome extends React.Component {
 	      attribution='Appli Lenny'
 	    />
       {markers}
+      <DivIcon position={this.state.latlng}>
+        <svg className="user-location" viewBox="0 0 120 120" version="1.1"
+          xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="50"/>
+          <Popup><span>Ma Position</span></Popup>
+        </svg>
+      </DivIcon>
 	  </Map>
 	 )
   }
