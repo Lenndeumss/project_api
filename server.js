@@ -150,11 +150,13 @@ app.get('/delete', function(req, res){
 
 app.get('/', function(req, res) {
     // var AppHtml = ReactDOMServer.renderToString(App({url: '/'}));
+	res.render("index", {eventsHydrate: []});
+    /*
     EventModel.find(function(err, events){
     	var eventsList = events;
     	//console.log(eventsList);
     	res.render("index", {eventsHydrate: eventsList});
-    });
+    });*/
 });
 
 
