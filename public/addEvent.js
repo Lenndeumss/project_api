@@ -36,7 +36,7 @@ class AddEvent extends React.Component {
 
       this.props.onHandleClick(data);
 
-      fetch('/addEvent?data='+JSON.stringify(data))
+      fetch(serverPath+'addEvent?data='+JSON.stringify(data))
       .then(() => this.setState({ redirect: true }));
     } else {
       alert("Choisir un Type d'événement !");

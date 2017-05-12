@@ -18,7 +18,7 @@ class Profil extends React.Component {
   	  	userId : e.target.getAttribute("data-userId")
   	};
   	var objProfil = this;
-    fetch('/delete?data='+JSON.stringify(deleteEvent))
+    fetch(serverPath+'delete?data='+JSON.stringify(deleteEvent))
         .then(function(data) { return data.json()} )
         .then(function(data) {
             objProfil.props.onHandleClick(data);

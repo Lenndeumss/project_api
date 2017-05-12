@@ -25,7 +25,7 @@ class Login extends React.Component {
     }
 
     var objLogin = this;
-    fetch('/login?data='+JSON.stringify(data))
+    fetch(serverPath+'login?data='+JSON.stringify(data))
       .then(function(data) { return data.text()} )
       .then(function(userId) { 
          objLogin.setState({redirect: true, userId: userId});

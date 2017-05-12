@@ -15,7 +15,7 @@ class Home extends React.Component {
 
   refresh() {
         var objHome = this;
-        fetch('/refresh?userId='+objHome.props.userId+'&lastupdate='+objHome.state.lastupdate)
+        fetch(serverPath+'refresh?userId='+objHome.props.userId+'&lastupdate='+objHome.state.lastupdate)
         .then(function(data) {return data.json()} )
         .then(function(tabEvents) {
             //console.log(tabEvents);

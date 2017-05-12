@@ -24,7 +24,7 @@ class Register extends React.Component {
         email   : this.state.email,
         password: this.state.password
     }
-    fetch('/register?data='+JSON.stringify(data))
+    fetch(serverPath+'register?data='+JSON.stringify(data))
       .then(() => this.setState({ redirect: true }));
   }
 
