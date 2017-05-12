@@ -23,7 +23,7 @@ app.use(
 );
 
 
-mongoose.connect('mongodb://localhost/lennyApp' , function(err) {
+mongoose.connect('mongodb://Lenndeums:c1475369@ds137121.mlab.com:37121/events_app' , function(err) {
 
 });
 var eventSchema = mongoose.Schema({
