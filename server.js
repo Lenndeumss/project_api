@@ -23,7 +23,7 @@ app.use(
 );
 
 
-mongoose.connect('mongodb://Lenndeums:c1475369@ds137121.mlab.com:37121/events_app' , function(err) {
+mongoose.connect('mongodb://noel:paganelli@ds137121.mlab.com:37121/events_app' , function(err) {
 
 });
 var eventSchema = mongoose.Schema({
@@ -150,13 +150,11 @@ app.get('/delete', function(req, res){
 
 app.get('/', function(req, res) {
     // var AppHtml = ReactDOMServer.renderToString(App({url: '/'}));
-	res.render("index", {eventsHydrate: []});
-    /*
     EventModel.find(function(err, events){
     	var eventsList = events;
     	//console.log(eventsList);
     	res.render("index", {eventsHydrate: eventsList});
-    });*/
+    });
 });
 
 
