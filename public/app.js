@@ -18,7 +18,6 @@ var globalReducers  = combineReducers({Coord, Events, userId});
 // Store
 const store         = createStore(globalReducers, {Events: EventsHydrate});
 
-var serverPath = "https://salty-fortress-78748.herokuapp.com/";
 
 ReactDOM.render(  
     <Provider store={store}>
