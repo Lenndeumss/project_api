@@ -29,7 +29,7 @@ class Login extends React.Component {
       .then(function(data) { return data.text()} )
       .then(function(userId) { 
          objLogin.setState({redirect: true, userId: userId});
-         //console.log(objLogin.state);
+         console.log(objLogin.state);
          objLogin.props.onHandleSubmit(objLogin.state.userId);
        });
   }
